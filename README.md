@@ -85,7 +85,7 @@ bash scripts/eval_pass_k.sh
 
 ## Citation
 
-```tex
+```bibtex
 @article{ke2025musl,
     title={Mutual-Supervised Learning for Sequential-to-Parallel Code Translation}, 
     author={Changxin Ke and Rui Zhang and Shuo Wang and Li Ding and Guangli Li and Yuanbo Wen and Shuoming Zhang and Ruiyuan Xu and Jin Qin and Jiaming Guo and Chenxi Wang and Ling Li and Qi Guo and Yunji Chen},
