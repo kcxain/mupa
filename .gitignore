@@ -1,0 +1,5 @@
+.DS_Store
+.vscode
+.idea
+.pytest_cache
+*.jsonl
