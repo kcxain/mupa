@@ -22,7 +22,8 @@ This is the public release of the official implementation for the paper [Mutual-
 
 Please note that this repository is still under active development. We will release the end-to-end training and evaluation code in the near future. If you have any questions regarding the paper or the code, feel free to contact us at kcxain@gmail.com. We will get back to you as soon as possible.
 
-## ✨ Update
+## ✨ Updates
+- **[2025-09]** - MuSL has been accepted to **NeurIPS 2025** 🎉
 - **[2025-08]** - We have released [Qwen3-0.6B-translator](https://huggingface.co/kcxain/translator-Qwen3-0.6B), welcome to try!
 
 
