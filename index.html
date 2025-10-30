@@ -26,10 +26,6 @@
             cursor: pointer;
         }
 
-        h2.text-title {
-            margin-bottom: -2rem;
-        }
-
         /* --- Custom Table Styles --- */
         .table-container {
             margin: 24px auto;
@@ -37,13 +33,15 @@
             text-align: center;
             overflow-x: auto;
             /* For responsiveness on small screens */
+            max-width: 100%;
+            width: 100%;
         }
 
         .table-container table {
             border-collapse: collapse;
             width: auto;
             /* Let content define width */
-            max-width: 100%;
+            min-width: 100%;
             table-layout: auto;
             margin-left: auto;
             margin-right: auto;
@@ -235,203 +233,210 @@
                 </p>
             </div>
         </div>
+    </div>
 
 
-        <h2 class="text-title challs">Results
-        </h2>
-        <div class="content-wrapper visual">
-            <div class="content-box">
-
-                <h3 class="text-title" id="results" style="text-align: center;">Correctness of Code Translation</h3>
-                <div class="table-container">
-                    <table>
-                        <caption>
-                            Experimental Results on C-to-CUDA Translation. We evaluate the performance of framework
-                            using
-                            Llama3,
-                            Qwen2.5-Coder, and Qwen3, and compare it with prior state-of-the-art work CodeRosetta as
-                            well as
-                            strong
-                            general-purpose LLMs. Evaluation is conducted across multiple metrics: BLEU, CodeBLEU,
-                            Compile
-                            Pass
-                            (CPass), and Pass@{1,5,10}. (QiMeng-MuPa<sup><i>T</i></sup> denotes fine-tuning with data
-                            filtered by
-                            Qwen2.5-Coder.)
-                        </caption>
-                        <thead>
-                            <tr>
-                                <th rowspan="2">Model Name</th>
-                                <th rowspan="2">Size</th>
-                                <th colspan="2">Text-Similarity (%)</th>
-                                <th colspan="4">Functional-Equivalence (%)</th>
-                            </tr>
-                            <tr>
-                                <th>BLEU</th>
-                                <th>CodeBLEU</th>
-                                <th>CPass</th>
-                                <th>Pass@1</th>
-                                <th>Pass@5</th>
-                                <th>Pass@10</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">GPT-4o</th>
-                                <td>-</td>
-                                <td>76.28</td>
-                                <td>46.56</td>
-                                <td>89.66</td>
-                                <td>83.69</td>
-                                <td>92.50</td>
-                                <td>94.26</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">GPT-4.1</th>
-                                <td>-</td>
-                                <td>75.39</td>
-                                <td>36.41</td>
-                                <td>83.26</td>
-                                <td>80.28</td>
-                                <td>92.71</td>
-                                <td>94.68</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">DeepSeek-V3</th>
-                                <td rowspan="2">671B</td>
-                                <td>79.66</td>
-                                <td>45.05</td>
-                                <td>91.85</td>
-                                <td>85.61</td>
-                                <td>94.87</td>
-                                <td>96.40</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">DeepSeek-R1</th>
-                                <td>71.40</td>
-                                <td>39.00</td>
-                                <td>87.98</td>
-                                <td>82.23</td>
-                                <td>95.46</td>
-                                <td><b>97.63</b></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">TransCoder</th>
-                                <td>0.6B</td>
-                                <td>75.43</td>
-                                <td>78.06</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">CodeRosetta</th>
-                                <td>0.8B</td>
-                                <td>83.40</td>
-                                <td>78.84</td>
-                                <td>81.10</td>
-                                <td>75.96</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Qwen3</th>
-                                <td rowspan="2">0.6B</td>
-                                <td>61.25</td>
-                                <td>36.11</td>
-                                <td>31.33</td>
-                                <td>11.59</td>
-                                <td>20.56</td>
-                                <td>22.18</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">+ QiMeng-MuPa<sup><i>T</i></sup></th>
-                                <td>81.56</td>
-                                <td>82.01</td>
-                                <td><u>94.42</u></td>
-                                <td>84.44</td>
-                                <td><b>96.15</b></td>
-                                <td><u>97.33</u></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Qwen2.5-Coder</th>
-                                <td rowspan="2">7B</td>
-                                <td>72.07</td>
-                                <td>47.79</td>
-                                <td>72.10</td>
-                                <td>56.24</td>
-                                <td>77.73</td>
-                                <td>80.90</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">+ QiMeng-MuPa</th>
-                                <td><u>84.96</u></td>
-                                <td><u>84.98</u></td>
-                                <td><u>95.71</u></td>
-                                <td><u>85.15</u></td>
-                                <td><u>95.73</u></td>
-                                <td>97.00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Llama3-Instruct</th>
-                                <td rowspan="2">8B</td>
-                                <td>69.05</td>
-                                <td>42.93</td>
-                                <td>68.24</td>
-                                <td>56.12</td>
-                                <td>71.64</td>
-                                <td>74.03</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">+ QiMeng-MuPa</th>
-                                <td><b>86.68</b></td>
-                                <td><b>86.63</b></td>
-                                <td>92.70</td>
-                                <td><b>85.56</b></td>
-                                <td>93.79</td>
-                                <td>94.57</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <h3 class="text-title" id="results" style="text-align: center;">Evolving of Translator</h3>
-                <figure style="margin: 0 auto; text-align: center;">
-                    <img src="assets/qwen.pdf" alt="Translator diagram"
-                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
-                    <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
-                        Improvements in Translator's functional correctness performance across iterations
-                    </figcaption>
-                </figure>
-                <h3 class="text-title" id="results" style="text-align: center;">Evolving of Tester</h3>
-                <figure style="margin: 0 auto; text-align: center;">
-                    <img src="assets/qwen_test.pdf" alt="Tester diagram"
-                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
-                    <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
-                        Improvements in Tester's performance for generating valid tests across iterations
-                    </figcaption>
-                </figure>
-
-                <h3 class="text-title" id="results" style="text-align: center;">Speedup of Translated Kernels</h3>
-                <figure style="margin: 0 auto; text-align: center;">
-                    <img src="assets/train_su.pdf" alt="Speed Up"
-                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
-                    <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
-                        Speedup of Translator's translated kernels across iterations as input size scaling
-                    </figcaption>
-                </figure>
+    <h2 class="text-title challs">Results
+    </h2>
+    <div class="content-wrapper visual">
+        <div class="text-swatch visual" style="padding: 0rem; margin-top: 3rem; max-width: 100%; background-color: transparent;">
+            <h3 class="text-title" id="results" style="text-align: center;">Correctness of Code Translation</h3>
+            <div class="table-container">
+                <table>
+                    <caption>
+                        Experimental Results on C-to-CUDA Translation. We evaluate the performance of framework
+                        using
+                        Llama3,
+                        Qwen2.5-Coder, and Qwen3, and compare it with prior state-of-the-art work CodeRosetta as
+                        well as
+                        strong
+                        general-purpose LLMs. Evaluation is conducted across multiple metrics: BLEU, CodeBLEU,
+                        Compile
+                        Pass
+                        (CPass), and Pass@{1,5,10}. (QiMeng-MuPa<sup><i>T</i></sup> denotes fine-tuning with data
+                        filtered by
+                        Qwen2.5-Coder.)
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Model Name</th>
+                            <th rowspan="2">Size</th>
+                            <th colspan="2">Text-Similarity (%)</th>
+                            <th colspan="4">Functional-Equivalence (%)</th>
+                        </tr>
+                        <tr>
+                            <th>BLEU</th>
+                            <th>CodeBLEU</th>
+                            <th>CPass</th>
+                            <th>Pass@1</th>
+                            <th>Pass@5</th>
+                            <th>Pass@10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">GPT-4o</th>
+                            <td>-</td>
+                            <td>76.28</td>
+                            <td>46.56</td>
+                            <td>89.66</td>
+                            <td>83.69</td>
+                            <td>92.50</td>
+                            <td>94.26</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">GPT-4.1</th>
+                            <td>-</td>
+                            <td>75.39</td>
+                            <td>36.41</td>
+                            <td>83.26</td>
+                            <td>80.28</td>
+                            <td>92.71</td>
+                            <td>94.68</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DeepSeek-V3</th>
+                            <td rowspan="2">671B</td>
+                            <td>79.66</td>
+                            <td>45.05</td>
+                            <td>91.85</td>
+                            <td>85.61</td>
+                            <td>94.87</td>
+                            <td>96.40</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DeepSeek-R1</th>
+                            <td>71.40</td>
+                            <td>39.00</td>
+                            <td>87.98</td>
+                            <td>82.23</td>
+                            <td>95.46</td>
+                            <td><b>97.63</b></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">TransCoder</th>
+                            <td>0.6B</td>
+                            <td>75.43</td>
+                            <td>78.06</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CodeRosetta</th>
+                            <td>0.8B</td>
+                            <td>83.40</td>
+                            <td>78.84</td>
+                            <td>81.10</td>
+                            <td>75.96</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Qwen3</th>
+                            <td rowspan="2">0.6B</td>
+                            <td>61.25</td>
+                            <td>36.11</td>
+                            <td>31.33</td>
+                            <td>11.59</td>
+                            <td>20.56</td>
+                            <td>22.18</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">+ QiMeng-MuPa<sup><i>T</i></sup></th>
+                            <td>81.56</td>
+                            <td>82.01</td>
+                            <td><u>94.42</u></td>
+                            <td>84.44</td>
+                            <td><b>96.15</b></td>
+                            <td><u>97.33</u></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Qwen2.5-Coder</th>
+                            <td rowspan="2">7B</td>
+                            <td>72.07</td>
+                            <td>47.79</td>
+                            <td>72.10</td>
+                            <td>56.24</td>
+                            <td>77.73</td>
+                            <td>80.90</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">+ QiMeng-MuPa</th>
+                            <td><u>84.96</u></td>
+                            <td><u>84.98</u></td>
+                            <td><u>95.71</u></td>
+                            <td><u>85.15</u></td>
+                            <td><u>95.73</u></td>
+                            <td>97.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Llama3-Instruct</th>
+                            <td rowspan="2">8B</td>
+                            <td>69.05</td>
+                            <td>42.93</td>
+                            <td>68.24</td>
+                            <td>56.12</td>
+                            <td>71.64</td>
+                            <td>74.03</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">+ QiMeng-MuPa</th>
+                            <td><b>86.68</b></td>
+                            <td><b>86.63</b></td>
+                            <td>92.70</td>
+                            <td><b>85.56</b></td>
+                            <td>93.79</td>
+                            <td>94.57</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="content-box visual" id="translation_cases" style="max-width: 100%;">
-                <h2 class="text-title challs" style="font-size: 1.5rem; text-align: center;">Translation Cases</h2>
+            <h3 class="text-title" id="results" style="text-align: center;">Evolving of Translator</h3>
+            <figure style="margin: 0 auto; text-align: center;">
+                <img src="assets/qwen.pdf" alt="Translator diagram"
+                    style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
+                    Improvements in Translator's functional correctness performance across iterations
+                </figcaption>
+            </figure>
+            <h3 class="text-title" id="results" style="text-align: center;">Evolving of Tester</h3>
+            <figure style="margin: 0 auto; text-align: center;">
+                <img src="assets/qwen_test.pdf" alt="Tester diagram"
+                    style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
+                    Improvements in Tester's performance for generating valid tests across iterations
+                </figcaption>
+            </figure>
+
+            <h3 class="text-title" id="results" style="text-align: center;">Speedup of Translated Kernels</h3>
+            <p class="text-content context small">
+            <figure style="margin: 0 auto; text-align: center;">
+                <img src="assets/train_su.pdf" alt="Speed Up"
+                    style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
+                    Speedup of Translator's translated kernels across iterations as input size scaling
+                </figcaption>
+            </figure>
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <div class="content-box visual" id="translation_cases" style="max-width: 100%;">
+        <h2 class="text-title challs" style="font-size: 1.5rem; text-align: center;">Translation Cases</h2>
+        <div
+            style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; align-items: stretch;">
+            <!-- C Code -->
+            <div style="flex: 1; min-width: 300px; max-width: 48%; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; color: #16a085; margin-bottom: 1rem;">Source C Code</h3>
                 <div
-                    style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; align-items: stretch;">
-                    <!-- C Code -->
-                    <div style="flex: 1; min-width: 300px; max-width: 48%; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #16a085; margin-bottom: 1rem;">Source C Code</h3>
-                        <div
-                            style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; flex: 1; display: flex; align-items: center; justify-content: center;">
-                            <pre
-                                style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #2c3e50; font-weight: 600;"><span style="color: #e74c3c;">void</span> <span style="color: #3498db;">cpu_cross_correlate</span>(<span style="color: #e74c3c;">float</span> *Isg, <span style="color: #e74c3c;">float</span> *Iss, 
+                    style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <pre
+                        style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #2c3e50; font-weight: 600;"><span style="color: #e74c3c;">void</span> <span style="color: #3498db;">cpu_cross_correlate</span>(<span style="color: #e74c3c;">float</span> *Isg, <span style="color: #e74c3c;">float</span> *Iss, 
   <span style="color: #e74c3c;">float</span> *sp, <span style="color: #e74c3c;">float</span> *gp, 
   <span style="color: #e74c3c;">int</span> npml, <span style="color: #e74c3c;">int</span> nnz, <span style="color: #e74c3c;">int</span> nnx) {
   <span style="color: #9b59b6;">for</span> (<span style="color: #e74c3c;">int</span> i1 = npml; i1 &lt; nnz - npml; i1++) {
@@ -444,96 +449,95 @@
     }
   }
 }</pre>
-                        </div>
-                    </div>
-
-                    <!-- CUDA Code -->
-                    <div style="flex: 1; min-width: 300px; max-width: 48%; display: flex; flex-direction: column;">
-                        <h3 style="text-align: center; color: #8e44ad; margin-bottom: 1rem;">QiMeng-MuPa Translation
-                            (CUDA)</h3>
-                        <div
-                            style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; flex: 1; display: flex; align-items: center; justify-content: center;">
-                            <pre id="cuda-code"
-                                style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #2c3e50; font-weight: 600; min-height: 200px;"></pre>
-                        </div>
-                    </div>
-                    <style>
-                        .cuda-line {
-                            animation: slideIn 0.4s ease-out forwards;
-                        }
-
-                        @keyframes slideIn {
-                            from {
-                                opacity: 0;
-                                transform: translateY(-10px);
-                            }
-
-                            to {
-                                opacity: 1;
-                                transform: translateY(0);
-                            }
-                        }
-                    </style>
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const lines = [
-                                '<span style="color: #f39c12;">__global__</span> <span style="color: #e74c3c;">void</span> <span style="color: #3498db;">cuda_cross_correlate</span>(<span style="color: #e74c3c;">float</span> *Isg, <span style="color: #e74c3c;">float</span> *Iss,',
-                                '  <span style="color: #e74c3c;">float</span> *sp, <span style="color: #e74c3c;">float</span> *gp,',
-                                '  <span style="color: #e74c3c;">int</span> npml, <span style="color: #e74c3c;">int</span> nnz, <span style="color: #e74c3c;">int</span> nnx) {',
-                                '  <span style="color: #e74c3c;">int</span> i1 = threadIdx.x + blockDim.x * blockIdx.x;',
-                                '  <span style="color: #e74c3c;">int</span> i2 = threadIdx.y + blockDim.y * blockIdx.y;',
-                                '  <span style="color: #e74c3c;">int</span> id = i1 + i2 * nnz;',
-                                '  ',
-                                '  <span style="color: #9b59b6;">if</span> (i1 &gt;= npml &amp;&amp; i1 &lt; nnz - npml &amp;&amp;',
-                                '    i2 &gt;= npml &amp;&amp; i2 &lt; nnx - npml) {',
-                                '    <span style="color: #e74c3c;">float</span> ps = sp[id];',
-                                '    <span style="color: #e74c3c;">float</span> pg = gp[id];',
-                                '    Isg[id] += ps * pg;',
-                                '    Iss[id] += ps * ps;',
-                                '  }',
-                                '}'
-                            ];
-
-                            const codeContainer = document.getElementById('cuda-code');
-                            let lineIndex = 0;
-
-                            function addLine() {
-                                if (lineIndex < lines.length) {
-                                    const lineDiv = document.createElement('div');
-                                    lineDiv.className = 'cuda-line';
-                                    lineDiv.innerHTML = lines[lineIndex];
-                                    codeContainer.appendChild(lineDiv);
-                                    lineIndex++;
-                                    setTimeout(addLine, 300);
-                                } else {
-                                    // 填满后，隔7s再清空并重新开始
-                                    setTimeout(function () {
-                                        codeContainer.innerHTML = '';
-                                        lineIndex = 0;
-                                        addLine();
-                                    }, 3000);
-                                }
-                            }
-
-                            addLine();
-                        });
-                    </script>
                 </div>
             </div>
-        </div>
 
-        <div class="content-box visual" style="margin-top: 2rem; max-width: 100%">
-            <h2 class="text-title" style="text-align: center; margin-bottom: 1rem;">Citation</h2>
-            <div class="text-swatch"
-                style="width:50rem; max-width: 100%; background: #ffffff; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; position: relative;">
-                <button id="copy-bibtex"
-                    style="position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; background-color: #3498db; color: white; border: none; border-radius: 0.25rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: background-color 0.3s ease;"
-                    onmouseover="this.style.backgroundColor='#2980b9'"
-                    onmouseout="this.style.backgroundColor='#3498db'">
-                    Copy
-                </button>
-                <pre id="bibtex-content"
-                    style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 600; color: #2c3e50; white-space: pre-wrap; word-wrap: break-word; line-height: 1.6;"><span style="color: #e74c3c; font-weight: 700;">@article</span>{<span style="color: #3498db;">ke2025mupa</span>,
+            <!-- CUDA Code -->
+            <div style="flex: 1; min-width: 300px; max-width: 48%; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; color: #8e44ad; margin-bottom: 1rem;">QiMeng-MuPa Translation
+                    (CUDA)</h3>
+                <div
+                    style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; flex: 1; display: flex; align-items: center; justify-content: center;">
+                    <pre id="cuda-code"
+                        style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; color: #2c3e50; font-weight: 600; min-height: 200px;"></pre>
+                </div>
+            </div>
+            <style>
+                .cuda-line {
+                    animation: slideIn 0.4s ease-out forwards;
+                }
+
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            </style>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const lines = [
+                        '<span style="color: #f39c12;">__global__</span> <span style="color: #e74c3c;">void</span> <span style="color: #3498db;">cuda_cross_correlate</span>(<span style="color: #e74c3c;">float</span> *Isg, <span style="color: #e74c3c;">float</span> *Iss,',
+                        '  <span style="color: #e74c3c;">float</span> *sp, <span style="color: #e74c3c;">float</span> *gp,',
+                        '  <span style="color: #e74c3c;">int</span> npml, <span style="color: #e74c3c;">int</span> nnz, <span style="color: #e74c3c;">int</span> nnx) {',
+                        '  <span style="color: #e74c3c;">int</span> i1 = threadIdx.x + blockDim.x * blockIdx.x;',
+                        '  <span style="color: #e74c3c;">int</span> i2 = threadIdx.y + blockDim.y * blockIdx.y;',
+                        '  <span style="color: #e74c3c;">int</span> id = i1 + i2 * nnz;',
+                        '  ',
+                        '  <span style="color: #9b59b6;">if</span> (i1 &gt;= npml &amp;&amp; i1 &lt; nnz - npml &amp;&amp;',
+                        '    i2 &gt;= npml &amp;&amp; i2 &lt; nnx - npml) {',
+                        '    <span style="color: #e74c3c;">float</span> ps = sp[id];',
+                        '    <span style="color: #e74c3c;">float</span> pg = gp[id];',
+                        '    Isg[id] += ps * pg;',
+                        '    Iss[id] += ps * ps;',
+                        '  }',
+                        '}'
+                    ];
+
+                    const codeContainer = document.getElementById('cuda-code');
+                    let lineIndex = 0;
+
+                    function addLine() {
+                        if (lineIndex < lines.length) {
+                            const lineDiv = document.createElement('div');
+                            lineDiv.className = 'cuda-line';
+                            lineDiv.innerHTML = lines[lineIndex];
+                            codeContainer.appendChild(lineDiv);
+                            lineIndex++;
+                            setTimeout(addLine, 300);
+                        } else {
+                            // 填满后，隔7s再清空并重新开始
+                            setTimeout(function () {
+                                codeContainer.innerHTML = '';
+                                lineIndex = 0;
+                                addLine();
+                            }, 3000);
+                        }
+                    }
+
+                    addLine();
+                });
+            </script>
+        </div>
+    </div>
+    </div>
+
+    <div class="content-box visual" style="margin-top: 2rem; max-width: 100%">
+        <h2 class="text-title" style="text-align: center; margin-bottom: 1rem;">Citation</h2>
+        <div class="text-swatch"
+            style="width:50rem; max-width: 100%; background: #ffffff; border: 1px solid #dee2e6; border-radius: 0.5rem; padding: 1.5rem; position: relative;">
+            <button id="copy-bibtex"
+                style="position: absolute; top: 1rem; right: 1rem; padding: 0.5rem 1rem; background-color: #3498db; color: white; border: none; border-radius: 0.25rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: background-color 0.3s ease;"
+                onmouseover="this.style.backgroundColor='#2980b9'" onmouseout="this.style.backgroundColor='#3498db'">
+                Copy
+            </button>
+            <pre id="bibtex-content"
+                style="margin: 0; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 600; color: #2c3e50; white-space: pre-wrap; word-wrap: break-word; line-height: 1.6;"><span style="color: #e74c3c; font-weight: 700;">@article</span>{<span style="color: #3498db;">ke2025mupa</span>,
   <span style="color: #16a085;">title</span>     = {QiMeng-MuPa: Mutual-Supervised Learning for Sequential-to-Parallel Code Translation},
   <span style="color: #16a085;">author</span>    = {Changxin Ke and Rui Zhang and Shuo Wang and Li Ding and Guangli Li and 
                Yuanbo Wen and Shuoming Zhang and Ruiyuan Xu and Jin Qin and Jiaming Guo and 
@@ -542,32 +546,25 @@
   <span style="color: #16a085;">year</span>      = {2025},
   <span style="color: #16a085;">url</span>       = {https://arxiv.org/abs/2506.11153}
 }</pre>
-            </div>
-            <script>
-                document.getElementById('copy-bibtex').addEventListener('click', function () {
-                    const bibtexContent = document.getElementById('bibtex-content').innerText;
-                    navigator.clipboard.writeText(bibtexContent).then(function () {
-                        const btn = document.getElementById('copy-bibtex');
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Copied';
-                        setTimeout(function () {
-                            btn.textContent = originalText;
-                        }, 2000);
-                    });
-                });
-            </script>
         </div>
+        <script>
+            document.getElementById('copy-bibtex').addEventListener('click', function () {
+                const bibtexContent = document.getElementById('bibtex-content').innerText;
+                navigator.clipboard.writeText(bibtexContent).then(function () {
+                    const btn = document.getElementById('copy-bibtex');
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(function () {
+                        btn.textContent = originalText;
+                    }, 2000);
+                });
+            });
+        </script>
+    </div>
     </div>
 
     </section>
     </div>
-    <footer class="footer-container">
-        <div class="container-wrapper">
-            <div class="footer-text">
-                <a target="_blank" href="https://stanford.edu/">© 2025. Stanford University.</a>
-            </div>
-        </div>
-    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var bibtexElement = document.getElementById('bibtex-time');
