@@ -103,6 +103,52 @@
             text-decoration: underline;
             text-decoration-thickness: 1px;
         }
+
+        /* Responsive font sizing */
+        @media (max-width: 1200px) {
+            .table-container table {
+                font-size: 0.85rem;
+            }
+
+            .table-container thead th {
+                padding: 10px 12px;
+            }
+
+            .table-container td,
+            .table-container tbody th {
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .table-container table {
+                font-size: 0.75rem;
+            }
+
+            .table-container thead th {
+                padding: 8px 10px;
+            }
+
+            .table-container td,
+            .table-container tbody th {
+                padding: 6px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .table-container table {
+                font-size: 0.65rem;
+            }
+
+            .table-container thead th {
+                padding: 6px 8px;
+            }
+
+            .table-container td,
+            .table-container tbody th {
+                padding: 4px 6px;
+            }
+        }
     </style>
 </head>
 
@@ -244,6 +290,20 @@
             <h3 class="text-title" id="results" style="text-align: center;">Correctness of Code Translation</h3>
             <div class="table-container">
                 <table>
+                    <caption style="margin-top: 0.5rem; font-size: 0.9rem; color: #555; font-style: italic;">
+                        Experimental Results on C-to-CUDA Translation. We evaluate the performance of framework
+                        using
+                        Llama3,
+                        Qwen2.5-Coder, and Qwen3, and compare it with prior state-of-the-art work CodeRosetta as
+                        well as
+                        strong
+                        general-purpose LLMs. Evaluation is conducted across multiple metrics: BLEU, CodeBLEU,
+                        Compile
+                        Pass
+                        (CPass), and Pass@{1,5,10}. (QiMeng-MuPa<sup><i>T</i></sup> denotes fine-tuning with data
+                        filtered by
+                        Qwen2.5-Coder.)
+                    </caption>
                     <thead>
                         <tr>
                             <th rowspan="2">Model Name</th>
